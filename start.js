@@ -26,6 +26,9 @@ headlessWallet.setupChatEventHandlers();
 function initRPC() {
 	var rpc = require('json-rpc2');
 
+	var Wallet = require('core/wallet.js');
+
+
 	var server = rpc.Server.$create({
 		'websocket': true, // is true by default
 		'headers': { // allow custom headers is empty by default
@@ -180,9 +183,9 @@ function witness(onDone){
 	}
 	createOptimalOutputs(function(arrOutputs){
 		let params = {
-			paying_addresses: [my_address], 
-			outputs: arrOutputs, 
-			signer: headlessWallet.signer, 
+			paying_addresses: [my_address],
+			outputs: arrOutputs,
+			signer: headlessWallet.signer,
 			callbacks: composer.getSavingCallbacks({
 				ifNotEnoughFunds: onError,
 				ifError: onError,
@@ -223,8 +226,8 @@ function checkAndWitness(){
 			let col = (conf.storage === 'mysql') ? 'main_chain_index' : 'unit_authors.rowid';
 			db.query(
 				"SELECT main_chain_index AS max_my_mci, "+db.getUnixTimestamp('creation_date')+" AS last_ts \n\
-				FROM units JOIN unit_authors USING(unit) WHERE +address=? ORDER BY "+col+" DESC LIMIT 1", 
-				[my_address], 
+				FROM units JOIN unit_authors USING(unit) WHERE +address=? ORDER BY "+col+" DESC LIMIT 1",
+				[my_address],
 				function(rows){
 					var max_my_mci = (rows.length > 0) ? rows[0].max_my_mci : -1000;
 					var distance = max_mci - max_my_mci;
@@ -306,8 +309,8 @@ function readNumberOfWitnessingsAvailable(handleNumber){
 		return handleNumber(count_witnessings_available);
 	db.query(
 		"SELECT COUNT(*) AS count_big_outputs FROM outputs JOIN units USING(unit) \n\
-		WHERE address=? AND is_stable=1 AND amount>=? AND asset IS NULL AND is_spent=0", 
-		[my_address, WITNESSING_COST], 
+		WHERE address=? AND is_stable=1 AND amount>=? AND asset IS NULL AND is_spent=0",
+		[my_address, WITNESSING_COST],
 		function(rows){
 			var count_big_outputs = rows[0].count_big_outputs;
 			db.query(
@@ -318,8 +321,8 @@ function readNumberOfWitnessingsAvailable(handleNumber){
 				WHERE address=? AND is_spent=0 \n\
 				UNION \n\
 				SELECT SUM(amount) AS total FROM headers_commission_outputs \n\
-				WHERE address=? AND is_spent=0", 
-				[my_address, WITNESSING_COST, my_address, my_address], 
+				WHERE address=? AND is_spent=0",
+				[my_address, WITNESSING_COST, my_address, my_address],
 				function(rows){
 					var total = rows.reduce(function(prev, row){ return (prev + row.total); }, 0);
 					var count_witnessings_paid_by_small_outputs_and_commissions = Math.round(total / WITNESSING_COST);
@@ -341,7 +344,7 @@ function createOptimalOutputs(handleOutputs){
 		db.query(
 			"SELECT amount FROM outputs JOIN units USING(unit) \n\
 			WHERE address=? AND is_stable=1 AND amount>=? AND asset IS NULL AND is_spent=0 \n\
-			ORDER BY amount DESC LIMIT 1", 
+			ORDER BY amount DESC LIMIT 1",
 			[my_address, 2*WITNESSING_COST],
 			function(rows){
 				if (rows.length === 0){
