@@ -4,13 +4,13 @@ exports.WS_PROTOCOL = 'ws://';
 // exports.hub = 'hub1..com/bb';
 
 
-//exports.hub = '132.148.150.38:8286';
+exports.hub = '172.31.34.124:8286';
 exports.KEYS_FILENAME = 'keys.json';
 
 exports.hub = 'hub:10060';
 
-exports.rpcPort = '10063';
-exports.webPort = 10064; // dag explorer
+exports.rpcPort = '6332';
+exports.webPort = 8081; // dag explorer
 exports.bServeAsHub = false;
 exports.bLight = false;
 
@@ -24,19 +24,22 @@ exports.TIMESTAMPING_INTERVAL = 60 * 1000; // in milliseconds
 exports.MIN_INTERVAL = 30000;
 
 
-exports.admin_email='zz634682577@163.com';
-exports.from_email='wenzhengzhang@chenhaninfo.com';
-exports.smtpTransport ="relay";
-exports.smtpUser='wenzhengzhang@chenhaninfo.com';
-exports.smtpPassword='Aa123123';
-exports.smtpRelay='smtp.mxhichina.com';
-exports.smtpPort='25';
+// exports.admin_email='zz634682577@163.com';
+// exports.from_email='wenzhengzhang@chenhaninfo.com';
+// exports.smtpTransport ="relay";
+// exports.smtpUser='wenzhengzhang@chenhaninfo.com';
+// exports.smtpPassword='Aa123123';
+// exports.smtpRelay='smtp.mxhichina.com';
+// exports.smtpPort='25';
 
 
 exports.initial_witnesses = [
-	'O4JNHW52CF5BDGASQEVLAVZGBMNHYZ2S',
-	'QLKAIB33R7AVHABYC5PGER2LLIVH5YE2',
-	'IOOOMPPD6FRHTNQBK763EAFUCIRJZYMP'
+	'WXNM4L4OTGIKSQHMMMBE6TUW6YJ4SHGY',
+	'J4LFUWCFCXLWNNCLGMVGQKXUOUULNPDW',
+	'DLVXBKXVNSOLGSXVAJBUYQUG5OEGWTV5',
+	'JNR2E5BPXI576ZEVR5S5HVTYC6EZNDPW',
+	'SLNK5ISPUQRJX2VIMUTU7YHMNTGOWUEC',
+	'SDO4KLWIPLLKBWMW5FJSWBCWBHHOC2OI'
 ];
 
 
