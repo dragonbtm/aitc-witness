@@ -9,6 +9,7 @@ var headlessWallet = require('headless');
 const validationUtils = require("core/validation_utils.js");
 var desktopApp = require('core/desktop_app.js');
 var objectHash = require('core/object_hash.js');
+var wallet_id;
 require('explorer/explorer.js');
 
 const MIN_INTERVAL = conf.MIN_INTERVAL || 60*1000;
@@ -146,7 +147,13 @@ function initRPC() {
 		});
 	});
 
-	server.listen(conf.rpcPort, conf.rpcInterface);
+
+	headlessWallet.readSingleWallet(function(_wallet_id) {
+		wallet_id = _wallet_id;
+		// listen creates an HTTP server on localhost only
+		var httpServer = server.listen(conf.rpcPort, conf.rpcInterface);
+		httpServer.timeout = 900*1000;
+	});
 }
 
 
