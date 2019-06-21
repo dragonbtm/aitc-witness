@@ -7,7 +7,7 @@ exports.WS_PROTOCOL = 'ws://';
 exports.hub = '172.31.34.124:8286';
 exports.KEYS_FILENAME = 'keys.json';
 
-exports.hub = 'hub:10060';
+// exports.hub = 'hub:10060';
 
 exports.rpcPort = '6332';
 exports.webPort = 8081; // dag explorer
