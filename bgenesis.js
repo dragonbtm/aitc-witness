@@ -13,7 +13,7 @@ var validation = require('core/validation.js');
 const witness_budget = 2000000000;
 const witness_budget_count = 2;
 const genesisConfigFile = "./bgenesis.json";
-const creation_message = "gy1118"
+const creation_message = "all men are created equal";
 
 var genesisConfigData = {};
 
