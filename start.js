@@ -383,7 +383,7 @@ eventBus.on('headless_wallet_ready', function(){
 	let readSingleAddress = conf.bSingleAddress ? headlessWallet.readSingleAddress : headlessWallet.readFirstAddress;
 	readSingleAddress(function(address){
 		my_address = address;
-		setInterval(checkAndWitness,3600000);
+		setInterval(checkAndWitness,5400000);
 		eventBus.on('new_joint', checkAndWitness); // new_joint event is not sent while we are catching up
 	});
 });
