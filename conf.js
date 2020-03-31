@@ -4,7 +4,7 @@ exports.WS_PROTOCOL = 'ws://';
 // exports.hub = 'hub1..com/bb';
 
 
-exports.hub = '172.31.34.124:8286';
+exports.hub = '47.244.159.27:8286';
 
 exports.passphrase = 'asdf';
 
